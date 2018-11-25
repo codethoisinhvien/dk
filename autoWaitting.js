@@ -43,6 +43,7 @@ function fakeRegistration(sum){
         ajaxRequest("POST", t, "json", sum, null, null, !0);
 }
 function addSubject(array){
+    reSuject=[]
 for(let i=0;i<array.length;i++){
     searchSubject(array[i]);
 
