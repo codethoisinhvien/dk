@@ -11,12 +11,13 @@
 (function () {
     'use strict';
 
-    let test = [{sb:"INT2207 4 (TH)",time:"T3-(1-2)-PM 201-G2"}];
-    let testbeak = ["MAT1042 7", "HIS1002 14", "INT2208 7"];
+   let test = [{ sb: "PES1025 10 (TH)", time: 0 },{sb:"PES 1035 6 (TH)",time:0},{sb:"PES1017 36 (TH)",time:0},{sb:"PES1017 36 (TH)",time:0},{sb:"PES1017 36 (TH)",time:0},{sb:"PES1015 29 (TH)",time:0}];
+     let testbeak = ["MAT1042 7", "HIS1002 14", "INT2208 7"];
     $registrationAvailable = true;
     let reSuject = [];
     let breakSuject = []
     let sum = undefined;
+    errorCallback1=0;
     function searchBreak(name) {
 
         let rows = document.getElementsByClassName('table table-hover table-bordered')[1];
@@ -57,7 +58,7 @@
         var rows = document.getElementsByClassName('table table-hover table-bordered')[0];
 
         for (let i = 0; i < rows.rows.length; i++) {
-
+ console.log(rows.rows[i].cells[4].innerText.trim())
             if (rows.rows[i].cells[4].innerText.trim() == name.sb && name.time === 0) {
 
                 if (rows.rows[i].cells[0].getElementsByTagName("input").length > 0) {
@@ -91,7 +92,7 @@
                 }
 
             }
-
+console.clear();
     }
         function fakeRegistration(sum) {
             var t = "/xac-nhan-dang-ky/" + $registrationMode;
@@ -132,8 +133,10 @@
             })
 
         }
-
+ var i=0;
+    var it=true
         var main = function () {
+          
             if (sum != undefined) {
                 var sum2 = sum;
 
@@ -146,16 +149,33 @@
             } else {
 
                 breakFull(testbeak);
+                if(it==true){
                 DSDK(2);
+                     i++;
+                    it=false;
+                }
+
+
+                    $('#divDSDK table tbody').bind('DOMSubtreeModified', function(e) {
+
+                        console.log(i)
+                        it=true
+                        if(i>75){
+                             window.location.reload();
+                        }
+  });
+                
                 sum = parseInt($('.total-credit-container').text());
             }
-            console.log("running")
+            console.log("running"+i)
+  var e = jQuery.Event("keypress");
+    e.which = 13; //choose the one you want
+    e.keyCode = 13;
 
         }
+
         $(document).ready(function () {
-            setInterval(function () {
-                window.location.reload()
-            }, 150000)
+            
             setInterval(main, 2000);
         })
     }) ();
