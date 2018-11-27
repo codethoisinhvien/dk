@@ -139,8 +139,8 @@ console.clear();
           
             if (sum != undefined) {
                 var sum2 = sum;
-
-                addSubject(test);
+                    
+                //addSubject(test);
                 if (sum2 < sum) {
                     fakeRegistration(sum);
                 }
@@ -158,7 +158,7 @@ console.clear();
 
                     $('#divDSDK table tbody').bind('DOMSubtreeModified', function(e) {
 
-                        
+                       
                         it=true
                         if(i>19){
                              window.location.reload();
@@ -176,6 +176,6 @@ console.clear();
 
         $(document).ready(function () {
             
-            setInterval(main, 2000);
+            setInterval(main, 300);
         })
     }) ();
