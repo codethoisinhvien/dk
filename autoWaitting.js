@@ -149,7 +149,7 @@ console.clear();
             } else {
 
                 breakFull(testbeak);
-                if(it==true){
+                if(it==true&&i<20){
                 DSDK(2);
                      i++;
                     it=false;
@@ -158,9 +158,9 @@ console.clear();
 
                     $('#divDSDK table tbody').bind('DOMSubtreeModified', function(e) {
 
-                        console.log(i)
+                        
                         it=true
-                        if(i>75){
+                        if(i>19){
                              window.location.reload();
                         }
   });
